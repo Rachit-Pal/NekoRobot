@@ -92,17 +92,17 @@ def warn(
         if soft_warn:  # punch
             chat.unban_member(user.id)
             reply = (
-                f"<code>❕</code><b>Punch Event</b>\n"
-                f"<code> </code><b>•  User:</b> {mention_html(user.id, user.first_name)}\n"
-                f"<code> </code><b>•  Count:</b> {limit}"
+                f"╔━「 <b>Punch Event</b> 」\n"
+                f"<b>• User :</b> {mention_html(user.id, user.first_name)}\n"
+                f"<b>• Count:</b> {limit}"
             )
 
         else:  # ban
             chat.kick_member(user.id)
             reply = (
-                f"<code>❕</code><b>Ban Event</b>\n"
-                f"<code> </code><b>•  User:</b> {mention_html(user.id, user.first_name)}\n"
-                f"<code> </code><b>•  Count:</b> {limit}"
+                f"╔━「 <b>Ban Event</b> 」\n"
+                f"<b>• User :</b> {mention_html(user.id, user.first_name)}\n"
+                f"<b>• Count :</b> {limit}"
             )
 
         for warn_reason in reasons:
@@ -124,7 +124,7 @@ def warn(
             [
                 [
                     InlineKeyboardButton(
-                        "✨ ʀᴇᴍᴏᴠᴇ ✨",
+                        "🔘 ʀᴇᴍᴏᴠᴇ",
                         callback_data="rm_warn({})".format(user.id),
                     ),
                 ],
@@ -132,12 +132,12 @@ def warn(
         )
 
         reply = (
-            f"<code>❕</code><b>Warn Event</b>\n"
-            f"<code> </code><b>•  User:</b> {mention_html(user.id, user.first_name)}\n"
-            f"<code> </code><b>•  Count:</b> {num_warns}/{limit}"
+            f"╔━「 <b>Warn Event</b> 」\n"
+            f"<b>• User :</b> {mention_html(user.id, user.first_name)}\n"
+            f"<b>• Count :</b> {num_warns}/{limit}"
         )
         if reason:
-            reply += f"\n<code> </code><b>•  Reason:</b> {html.escape(reason)}"
+            reply += f"\n<b>• Reason :</b> {html.escape(reason)}"
 
         log_reason = (
             f"<b>{html.escape(chat.title)}:</b>\n"
@@ -178,7 +178,7 @@ def button(update: Update, context: CallbackContext) -> str:
         res = sql.remove_warn(user_id, chat.id)
         if res:
             update.effective_message.edit_text(
-                "Warn removed by {}.".format(mention_html(user.id, user.first_name)),
+                f"Admin {mention_html(user.id, user.first_name)} has removed {mention_html(user.id, user.first_name)}'s warning.",
                 parse_mode=ParseMode.HTML,
             )
             user_member = chat.get_member(user_id)
@@ -453,7 +453,7 @@ def set_warn_strength(update: Update, context: CallbackContext):
             msg.reply_text("Too many warns will now result in a Ban!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"<b>Admin :</b> {mention_html(user.id, user.first_name)}\n"
                 f"Has enabled strong warns. Users will be seriously punched.(banned)"
             )
 
@@ -464,7 +464,7 @@ def set_warn_strength(update: Update, context: CallbackContext):
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"<b>Admin :</b> {mention_html(user.id, user.first_name)}\n"
                 f"Has disabled strong punches. I will use normal punch on users."
             )
 
@@ -512,18 +512,35 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = """
- ❍ `/warns <userhandle>`*:* get a user's number, and reason, of warns.
- ❍ `/warnlist`*:* list of all current warning filters
+`/warns` <userhandle>
+**»** Get a user's number, and reason, of warns.
+ 
+`/warnlist`
+**»** List of all current warning filters.
+
 
 *Admins only:*
- ❍ `/warn <userhandle>`*:* warn a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
- ❍ `/dwarn <userhandle>`*:* warn a user and delete the message. After 3 warns, the user will be banned from the group. Can also be used as a reply.
- ❍ `/resetwarn <userhandle>`*:* reset the warns for a user. Can also be used as a reply.
- ❍ `/addwarn <keyword> <reply message>`*:* set a warning filter on a certain keyword. If you want your keyword to \
-be a sentence, encompass it with quotes, as such: `/addwarn "very angry" This is an angry user`.
- ❍ `/nowarn <keyword>`*:* stop a warning filter
- ❍ `/warnlimit <num>`*:* set the warning limit
- ❍ `/strongwarn <on/yes/off/no>`*:* If set to on, exceeding the warn limit will result in a ban. Else, will just punch.
+
+`/warn` <userhandle>
+**»** Warn a user. After 3 warns, the user will be banned.
+
+`/dwarn` <userhandle>
+**»** Warn a user and delete the message. After 3 warns, the user will be banned.
+
+`/resetwarn` <userhandle>
+**»** Reset the warns for a user. Can also be used as a reply.
+
+`/addwarn` <keyword or reply message>
+**»** Set a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: `/addwarn` "very angry" This is an angry user.
+
+`/nowarn` <keyword>
+**»** Stop a warning filter.
+
+`/warnlimit` <number>
+**»** Set the warning limit.
+
+`/strongwarn` <on or yes / off or no>
+**»** If set to on, exceeding the warn limit will results a ban. Else, will just punch.
 """
 
 __mod_name__ = "Wᴀʀɴs"
