@@ -11,7 +11,7 @@
 <!--- P Y T H O N   B A D G E --->
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Dank-del/)</br>
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Rachit-Pal/)</br>
 
 
 <!--- G I T H U B   S T A T S   B A D G E --->
