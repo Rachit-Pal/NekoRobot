@@ -17,7 +17,7 @@ from NekoRobot.helper_extra.dbfun import (
 from NekoRobot.utils.errors import capture_err
 from NekoRobot.utils.permissions import adminsOnly
 
-regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|🖤|❣️|💝|💖|💕|❤|💘|cool|good|👍|baby|bsdk|bhadve|betichod|thankyou|love|pro)$"
+regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|thank you|🖤|❣️|💝|💖|💕|❤|💘|cool|good|👍|baby|nice|thankyou|love|pro)$"
 regex_downvote = r"^(\-|\-\-|\-1|👎|💔|noob|weak|fuck off|nub|gey|mf)$"
 
 
