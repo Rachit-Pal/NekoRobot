@@ -18,7 +18,7 @@ from NekoRobot.utils.errors import capture_err
 from NekoRobot.utils.permissions import adminsOnly
 
 regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|thank you|🖤|❣️|💝|💖|💕|❤|💘|cool|good|👍|baby|nice|thankyou|love|pro)$"
-regex_downvote = r"^(\-|\-\-|\-1|👎|💔|noob|weak|fuck off|nub|gey|mf)$"
+regex_downvote = r"^(\-|\-\-|\-1|👎|💔|noob|kid|shit|weak|fuck off|nub|gey|mf)$"
 
 
 karma_positive_group = 3
